@@ -1,0 +1,16 @@
+<h1> hello Eya !</h1>
+{{ t }}
+<table> 
+<tr>
+    <td> ID</td>
+    <td> NAME</td>
+    <td> CLASS NUMBER</td>
+</tr>
+{% for teacher in tt %}
+<tr> 
+    <td>{{ teacher.id }}</td>
+    <td>{{ teacher.name }}</td>
+    <td>{{ teacher.nb_classe }}</td>
+</tr>
+{%endfor%}
+</table>

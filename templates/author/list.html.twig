@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des auteurs</title>
+</head>
+<body>
+    <h1>Liste des auteurs</h1>
+{%if tt is empty%}
+<p<No element</p>
+{%else%}
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>PICTURE</th>
+                <th>USER NAME</th>
+                <th>EMAIL</th>
+                <th>NB_BOOK</th>
+                <th>DETAILS</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for authors in authors %}
+            <tr>
+                <td> {{ authors.id }}</td>
+                <td><img src="{{ authors.picture }}" alt="{{ authors.username }}" /></td>
+                <td>{{ authors.username|upper }}</td>
+                <td>{{ authors.email }}</td>
+                <td>{{ authors.nb_books }}</td>
+                <td><a href="{{ path('showAuthor', {'id': author.id}) }}">Détails</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {%endif%}
+    <hr> le nombre des auteurs est: {{ authors|length }} </hr>
+    {% set totalBooks = 0 %}
+
+{% for author in A %}
+    {% set totalBooks = totalBooks + author.nb_books %}
+{% endfor %}
+    <div>
+        Le nombre total de livres de tous les auteurs est : {{ totalBooks }}
+    </div>
+</body>
+</html>
